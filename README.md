@@ -19,6 +19,10 @@ The following npm packages:
 * **ts-node** - To just make everything cleaner (no more generated JS files)
 * **nodemon** - File watcher triggering build and restarting server
 
+Bonus:
+* **JQuery**
+* **Semantic-UI** - just css/js/assets
+
 ## How to use it
 
 #### Production
