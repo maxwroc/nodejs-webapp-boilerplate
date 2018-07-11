@@ -15,3 +15,7 @@ export interface IControllerConstructor {
 export interface IController {
 
 }
+
+interface IViewConstructor<T> {
+    (props: T): JSX.Element;
+}

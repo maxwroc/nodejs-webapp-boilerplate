@@ -1,6 +1,7 @@
 // dependencies
 import { IController } from "../shared";
 import { Router, NextFunction, Request, Response } from "express";
+import { Index } from "../views/index";
 // views
 import { MasterPageView, jsxToString } from "../views/master-page.view";
 import { BodyView } from "../views/body.view";
@@ -15,8 +16,6 @@ export class MainController implements IController {
     }
 
     public index() {
-        return this.response.send(
-            MasterPageView({ title: "Wallet list", body: jsxToString(BodyView, {}) })
-        );
+        this.response.render("index");
     }
 }

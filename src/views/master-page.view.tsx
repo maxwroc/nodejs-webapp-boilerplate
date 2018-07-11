@@ -1,30 +1,27 @@
 import { renderToString } from "react-dom/server";
+import React = require("react");
+import { IViewConstructor } from "../shared";
 
 const scripts: { [script: string]: number } = {};
 
-export interface IMasterProps<T> {
-  title: string,
-  body: string
+export interface IMasterProps {
+    title: string;
+    children?: any;
 }
 
-export function MasterPageView<T>(props: IMasterProps<T>) {
-    const { title, body } = props;
-    const scriptsString = Object.keys(scripts).map(s => `<script src="${s}"></script>`).join("");
-    return `
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>${title}</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    ${scriptsString}
-  </head>
-  <body style="margin:0">
-    <div id="app">${body}</div>
-  </body>
-</html>
-`;
-}
+export const MasterPageView: IViewConstructor<IMasterProps> = ({ title, children }) =>
+    <html>
+        <head>
+            <title>{title}</title>
+            <link rel="stylesheet" href="/css/semantic.min.css" />
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/semantic.min.js"></script>
+            {Object.keys(scripts).map(s =>
+                <script key={s} src={s}></script>
+            )}
+        </head>
+        <body>{children}</body>
+    </html>;
 
 export function addScriptFile(...files: string[]) {
     files.forEach(f => {

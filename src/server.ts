@@ -1,4 +1,6 @@
+import * as path from "path";
 import * as express from "express";
+import * as reactViews from "express-react-views";
 import * as bodyParser from "body-parser";
 import { IControllerConstructor, IMap } from "./shared";
 
@@ -19,5 +21,13 @@ export class Server {
         this.app.use(bodyParser.urlencoded({
             extended: true
         }));
+
+        // React views
+        this.app.set("views", path.join(__dirname, "views"));
+        this.app.set("view engine", "tsx");
+        this.app.engine("tsx", reactViews.createEngine());
+
+
+        this.app.use(express.static(path.join(__dirname, "../dist/public")));
     }
 }
