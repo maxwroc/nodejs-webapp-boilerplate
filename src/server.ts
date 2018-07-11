@@ -3,9 +3,6 @@ import * as bodyParser from "body-parser";
 import { IControllerConstructor, IMap } from "./shared";
 
 export class Server {
-
-    private mapping: IMap<IControllerMapping> = {};
-
     constructor(controllers: IControllerConstructor[], public app = express()) {
         this.configure(controllers);
     }
@@ -23,9 +20,4 @@ export class Server {
             extended: true
         }));
     }
-}
-
-interface IControllerMapping {
-    controller: IControllerConstructor,
-    func: string
 }
