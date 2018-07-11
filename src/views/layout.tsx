@@ -9,7 +9,7 @@ export interface IMasterProps {
     children?: any;
 }
 
-export const MasterPageView: IViewConstructor<IMasterProps> = ({ title, children }) =>
+export const Layout: IViewConstructor<IMasterProps> = ({ title, children }) =>
     <html>
         <head>
             <title>{title}</title>
@@ -20,7 +20,7 @@ export const MasterPageView: IViewConstructor<IMasterProps> = ({ title, children
                 <script key={s} src={s}></script>
             )}
         </head>
-        <body>{children}</body>
+        <body className="pushable">{children}</body>
     </html>;
 
 export function addScriptFile(...files: string[]) {
@@ -37,4 +37,4 @@ export function jsxToString<T>(elemConstructor: { (props: T): JSX.Element }, pro
   return renderToString(elemConstructor(props));
 }
 
-export default MasterPageView;
+export default Layout;
