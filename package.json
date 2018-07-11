@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-webapp-template",
+  "version": "1.0.0",
+  "description": "This is a web-app template which is based on NodeJS + TypeScript + Express + React",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "ts-node -P src/tsconfig.json src/index.ts",
+    "start:debug": "set TS_NODE_PROJECT=src/tsconfig.json&& node --inspect=5858 -r ts-node/register src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node_modules/.bin/nodemon"
+  },
+  "author": "maxwroc",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "nodemon": "^1.18.0",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "ts-node": "^7.0.0"
+  }
+}
